@@ -1,0 +1,150 @@
+\begin{table}[H]
+\caption{Results for each of our model outcome for a subset of the parameter values presented in Table~1. The right half of the table lists results for the parameter values listed on the left. To improve presentation, parameter values are listed sparsely: for a given focal parameter, parameter values for all other parameters are constant. For example, in rows 1-3, parameter values for $\sigma$, N, and $\delta$ follow row 1. Model outcome columns, in order from left to right, are as follows: 1) Median number of circulating strains over the whole simulation; 2) Time (steps) to first reach optimum virulence, which can be roughly translated to a number of host generations by dividing by 100 (average life span of an uninfected host); 3) Maximum virulence reached during the evolution of the parasite to its adaptive peak; 4) Total time period where the parasite has a higher-than-optimum virulence; 5) Departure from optimum virulence lists the standard deviation in log(replication rate) (virulence on the logit scale) among circulating strains (median among all stochastic simulations) after optimum virulence is reached.} \label{tab:model_details} 
+\resizebox{\columnwidth}{!}{
+\bgroup
+\begin{tabular}[t]{|R{2.50cm}:R{2.50cm}:R{2.50cm}:R{2.50cm}:R{2.50cm}|R{2.50cm}:R{2.50cm}:R{2.50cm}:R{2.50cm}:R{2.50cm}|}
+\hline
+\multicolumn{5}{|c}{\cellcolor[HTML]{EFEFEF} Parameters} & \multicolumn{5}{|c|}{\cellcolor[HTML]{9B9B9B}Model Outcomes}
+\\
+\hline
+\cellcolor[HTML]{EFEFEF} \textbf{Focal Parameter}                &
+\cellcolor[HTML]{EFEFEF} \textbf{Mutation Probability: $\mu$}    &
+\cellcolor[HTML]{EFEFEF} \textbf{Mutational SD: $\sigma$}        &
+\cellcolor[HTML]{EFEFEF} \textbf{Population Size: N} 		     & 
+\cellcolor[HTML]{EFEFEF} \textbf{Efficiency Scale: $\delta$}     &     
+\cellcolor[HTML]{9B9B9B} \textbf{Median number of circulating strains:} &
+\cellcolor[HTML]{9B9B9B} \textbf{Time to optimum virulence:}           &
+\cellcolor[HTML]{9B9B9B} \textbf{Maximum transient virulence:}   &
+\cellcolor[HTML]{9B9B9B} \textbf{Time with greater than optimum virulence:} &
+\cellcolor[HTML]{9B9B9B} \textbf{Departure from optimum virulence:}
+
+\\
+\hline 
+             & 
+0.001        &
+0.05         &
+600          &
+30           &
+3            &
+$>$ 5x10\textsuperscript{5}  &
+0.41         &
+4.6x10\textsuperscript{5}    &
+-- 
+       
+\\
+
+$\mu$        & 
+0.005        &
+             &
+             &
+             &
+11           &
+1.1x10\textsuperscript{5} &
+0.40         &
+1.0x10\textsuperscript{5} &
+0.14
+       
+\\
+
+             & 
+0.025        &
+             &
+             &
+             &
+39           &
+3.4x10\textsuperscript{4}   &
+0.40         &
+3.0x10\textsuperscript{4}   &
+0.17
+
+\\
+\hdashline
+
+$\sigma$     & 
+0.005        &
+0.01         &
+600          &
+30           &
+11           &
+$>$ 5x10\textsuperscript{5} &
+0.41         &
+3.1x10\textsuperscript{5}   &
+--
+       
+\\
+
+             & 
+             &
+0.25         &
+             &
+             &
+11           &
+1.1x10\textsuperscript{4}   &
+0.40         &
+1.0x10\textsuperscript{4}   &  
+0.21
+
+\\
+\hdashline
+
+N            &
+0.005        &
+0.05         &
+200          &
+30           &
+4            &
+3.6x10\textsuperscript{5}   & 
+0.41           &
+3.3x10\textsuperscript{5}   &   
+0.23
+      
+\\
+
+             &
+             &
+             &
+1800         &
+             &
+33           &
+6.7x10\textsuperscript{4}   & 
+0.41           &
+6.0x10\textsuperscript{4}   &   
+0.11 
+
+\\
+\hdashline
+
+$\delta$     & 
+0.005        &
+0.05         &
+600          &
+10           &
+11           &
+1.7x10\textsuperscript{5}   & 
+0.47          &
+1.7x10\textsuperscript{5}   &   
+0.09 
+       
+\\
+
+             &
+             &
+             &
+             &
+50           &
+11           &
+1.3x10\textsuperscript{5}   & 
+0.38         &
+1.2x10\textsuperscript{5}   &   
+0.18 
+
+\\
+
+\hline
+
+\end{tabular}
+\egroup
+}
+\end{table}
+
+\clearpage

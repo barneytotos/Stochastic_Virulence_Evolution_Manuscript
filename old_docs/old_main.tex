@@ -1,0 +1,205 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\RequirePackage[left=1in,%
+                right=1in,%
+                top=1in,%
+                bottom=1in,%
+                headheight=12pt,%
+                letterpaper]{geometry}
+\usepackage{color}
+\usepackage{xspace}
+\newcommand{\mk}[1]{{\bf \color{red} MK: #1}}
+\newcommand{\bb}[1]{{\bf \color{blue} BMB: #1}}
+\newcommand{\rzero}{{\cal R}_0\xspace}
+
+\title{resistance and tolerance}
+\author{kainm}
+\date{November 2018}
+
+\begin{document}
+
+\maketitle
+
+\section*{New motivation}
+
+This project is now all about comparing deterministic and stochastic model results to understand time to peak, transient movement down an adaptive peak as a function of population size and mutation rate, as well as transient movements away from optimal aggressiveness (and thus virulence).
+
+It will be useful to compare the size of the stable distribution in the deterministic model with the size of the actual movement in mean in the stochastic model.
+
+Previous work has shown that parasites can parasites can evolve transient levels of suboptimal virulence. Here I find that parasites may experience either transient periods of higher than optimum or lower than optimum virulence depending on starting conditions and the shape of the tradeoff curve and severity of mismatch of aggressiveness and tuning.
+
+\section*{Results since making some progress on simulations}
+
+First, I assume a pathogen evolves in the space of aggressiveness and efficiency, which translate into virulence and transmission rate. A host can evolve tolerance, which decreases the translation of aggressiveness into virulence and resistance, which decreases the effects of aggressiveness as well as transmission (by moving a parasite down its own tradeoff curve). Operating under these basic assumptions I explore the evolution of virulence and host defense with various assumptions about where biased mutations reside. The general idea here is to examine how a parasite evolves when it isn't already on its tradeoff frontier. What kind of basic assumptions change how a parasite evovles as it approaches the point where the major constraint to evolution is trading off alpha and beta?
+
+When there is a bias for increasing aggressiveness, a parasite can achieve higher R0, but will quickly drive itself to extinction, regardless of how mutation bias works in efficiency or how tolerance is evolving. Strong evolution of resistance can actually save the parasite from killing its host population in rare instances (evolution of resistance at the same speed as aggressiveness). Under these assumptions a parasite does not evolve like it is on a tradeoff curve because it can move in increasing alpha space and get increasing beta almost indefinitely if it is far from its frontier. Because of mutation selection balance the parasite cant ever actually reach its frontier, and will never evolve as if it is on its frontier. If somehow it manages to get there then it can (slowly) overcome the mutation bias problem and move towards the global optimum aggressiveness. These results are found in approximately the first 50 or so slides of the res tol explore keynote presentation.
+
+When there is no bias in aggressiveness but bias in efficiency, a parasite operates as it would be expected to: moving towards the global optimum, determined by the point on the tradeoff curve of optimal aggressiveness that translates to the highest R0. A few things that arise here: the larger the biased mutation in efficiency (if those are drawn at the same time as a movement in aggressiveness) the longer it takes for a parasite to get in the vicinity of the global optimum aggressiveness. The larger the mutation bias the lower R0 it will obtain, though in the long long run it will eventually get to the global optimum at an infinite population, but not at a finite population. These results are found roughly between slides 50-80.
+
+The interesting dynamics begin to arise when we start to consider a pathogen such as influenza, which tends to actually lose a bit of efficiency as it increases aggressiveness. In this case there are two opposing mechanisms of selection depending on the parameter space the parasite finds itself in, resulting in three distinct regions of parameter space. In the most interesting of these three spaces, the movement of the parasite will depend on the size of the mutation bias in efficiency. With no bias it will move in the direction of the global optimum. With even a small bias the parasite first evolves decreasing aggressiveness (because this actually results in an increase in efficiency), and once it reaches a ridge of equivalence in aggressiveness efficiency space (determined by the slope of the logit scale of these two parameters), the parasite will start to evolve up the tradeoff curve, resulting in an increase in aggressiveness (a good example of this is found on slide 108).
+
+In general host resistance is just bad for the evolving parasite in the sense that it will take longer for it to keep the same R0, and can never get to a higher R0. On the other hand, there are many instances where host tolerance actually allows a parasite to get to its optimum faster (maintaining higher efficiency I THINK), and based on the slope of the gain in beta as a function of aggressiveness relative to alpha as a function of aggressiveness, a parasite will continue to evolve to higher aggressiveness (the former has to be bigger). However, once the slopes of these two curves are equal a parasite will stop evolving higher aggressiveness, will keep obtaining higher efficiency and thus higher R0, and a host will also continue to evolve tolerance resulting in higher fitness as well. All things being equal (which they are not) this means that tolerance evolution is better for both parties in the long run. 
+
+A key question is HOW are all things not equal. Is the gradient towards resistance steeper in the early phases and do parasite and pathogen get sucked in the direction of evolving an arms race despite it not being the path to the global optimal fitness for either side? Not sure I can explore this now, but definitely later.
+
+A key important question is what does all of this tell us? what are reasonable assumptions and what are not reasonable assumptions? Are there examples? How does time to peak, mutation bias, and population size interact to determine the long term stable equilibrium? 
+
+An extremely key question is whether tolerance evolution, under some simple assumptions, actually changes where a parasite equilibrates in a finite population while it is evolving under even a small mutation bias --- This would be a key finding. Does evolution from above the optimum and below the optimum change how this key aspect changes?
+
+Another adjustment that I recently made at the suggestion of JD is to reformulate in terms of parasite aggressiveness and parasite tuning, which together define parasite efficiency. Set up in this way, a parasite still moves along the path the an optimal tradeoff curve, but is also constrained by not moving too far in that direction because of mismatching in life history strategy. In this way the parasite moves in a zig-zag pattern towards its global optimum virulence.
+
+\section*{Introduction}
+
+\mk{Paragraph 1: outline the importance of the main Q: resistance vs tolerance}
+
+Competition between a host and parasite often generates strong selection pressure on parasite exploitation strategy and host defense strategy. Parasites are assumed to be able to adjust their aggressiveness, while hosts can invest in resistance (reducing parasite load) or tolerance (decreasing fitness costs for a given pathogen load) (Boots 2008, Adelman and Hawley 2017). Predicting evolved levels of parasite aggression and host investment in resistance and tolerance is important for determining host mortality and recovery rate as well as parasite transmission rate, and can help to determine responses to ... Resistance evolution in hosts is predicted to generate Red Queen cycles... while tolerance evolution is expected to lead to selective sweeps but does not impact... Because of these different feedbacks on both parasite load and prevalence of host infection, the type of defense that a host invests in can alter the evolutionary trajectory of the host-parasite interaction...
+
+\mk{Paragraph 2, 3: What have people done to study this problem}
+
+The evolution of host defense responses to parasite exploitation have been studied using mathematical models for decades (Anderson and May 1982, Roy and Kirchner 2000, Best et al. 2014). This vast modeling literature has historically considered host resistance (reducing pathogen load) as the primary mechanism of host defense; more recent theoretical and empirical studies (theoretical: Carval and Ferriere 2010, Best et al. 2014; empirical: Raberg et al. 2007, Athanasiadou et al. 2015, Rangan et al. 2016) have considered host tolerance (decreasing the impact of a given pathogen load on host fitness) as a host strategy for mitigating the effects of pathogen infection. (The plant-pathogen literature has focused on tolerance for nearly a century [Foroni et al. 2013], but the animal-pathogen literature has only recently turned in this direction.) Most models consider host defense evolution in response to a non-evolving parasite, or the coevolution of a single host defense (resistance or tolerance) and pathogen virulence (the loss of fitness, or rate of mortality, of infected hosts); however, at least one study has employed a full coevolutionary model, considering evolution of both resistance and tolerance of hosts as well as evolution of parasite virulence (Carval and Ferriere 2010). 
+
+In addition to variation among studies in what traits are assumed to be evolving, models vary in their assumptions about the genetic architecture of host-parasite interactions; the time scale on which ecology (epidemiology) and evolution occur; whether or not the effects of finite population size are considered; and the mode of selection. For a good description of the full range of genetic assumptions (gene-for-gene: GFG; matching allele: MA; and quantitative genetic: QG approaches) see Best et al. (2014). For a review on options for modeling evolution see Lion 2018; and for a more focused review on optimization criteria see Lion and Metz 2018.
+
+\mk{Paragraph 4: What are we missing}
+
+Nearly all combinations of this multitude of possibilities have been explored mathematically. However, we have only very recently begun to understand the complex genetic and physiological pathways of both host resistance and tolerance to exploitation (Glass 2012, Medzhitov et al. 2012, Soares et al. 2017, McCarville and Ayres 2018). For this reason many of the assumptions that these models make about the shapes of cost functions and benefits of host resistance and tolerance and the correlations between them have been based on logic and conjecture alone. Yet, many conclusions have proven to be robust to a wide range of assumptions: tolerance rarely leads to genetic polymorphism (Roy and Kirchner 2000, Boots et al. 2009, Carval and Ferriere 2010); accelerating cost functions promote single strategies, while linear and decelerating cost functions can allow mixed strategies (Foroni et al. 2004, Restif and Koella 2004, Carval and Ferriere 2010); resistance is likely to result in temporal fluctuations in host genotype (Red Queen dynamics) (Sasaki 2000; Agrawal and Lively 2002); tolerance is less likely (but can) result in host counter-adaptation ((Boots and Bowers 1999; Roy and Kirchner 2000; Miller et al. 2005, Best et al. 2008); Hosts are expected to invest in tolerance against extremely aggressive parasites (Restif and Koella 2004, Carval and Ferriere 2010). 
+
+Other conclusions are more model-specific due to slightly more esoteric modeling decisions: fixed parasite virulence selects for resistance but plastic virulence selects for tolerance (Soler and Soler 2017); tolerance is favored until a critical threshold of parasite load (Moreno-Garcia et al. 2014); Can add more here...
+
+Although these results suggest an extremely complicated biological picture, it is apparent that resistance and tolerance are both viable outcomes under a variety of scenarios. However, the majority of evidence of host defense \bb{can we call tolerance a ``defense'', or do we need another word?} evolution in both natural and laboratory systems involve host resistance evolution: European rabbits to the myxoma virus (MYXV) (Kerr et al. 2015); House finch to mycoplasma (Bonneaud et al. 2011); others.... --- Blue crab evolution of \emph{tolerance} to \emph{Mytilicola intestinalis} (Feis et al. 2016). \mk{Some dynamic transition word here} A number of laboratory experiments have found \emph{de novo} evolution of host resistance to parasite infection (Bohannan and Lenski 2000, Van der Linden et al. 2013, Frickel et al. 2016, Frickel et al. 2018).
+
+Why is resistance seen so much more frequently than tolerance? A non-exhaustive list: First, we haven't been looking for tolerance for very long in the animal literature; Second, tolerance is harder to detect than resistance for two reasons: statistical power is lower to detect variation in slopes than variation in intercepts, and since a beneficial tolerance allele is expected to selectively sweep, we may fail to detect changes if we haven't been monitoring populations over appropriate time scales; Third, standing genetic variation for tolerance may be lower than for resistance, leading to slower evolutionary change \bb{why? because of pop gen/sweeps?}; Fourth, tolerance may either be more costly, or less beneficial than resistance \bb{this explanation is at a different level from the others; begs the question slightly (i.e, what would the mechanistic reason be for this?}.
+
+Critically, we currently lack sufficient data to test most of these possibilities. However, the diversity of pathways that could contribute to tolerance discussed in Soares et al. (2017) combined with previous modeling results indicating that tolerance is a viable option suggests that the paucity of evidence for tolerance is likely driven in large part by our nascent \bb{?} search for tolerance and our ability to detect tolerance. Additionally, Soares et al. (2017) indicates that whether tolerance or resistance is likely to evolve is likely to be heavily influenced by the traits of a parasite. \bb{not sure about this last bit?}
+
+Can additional modeling studies provide further insight into this problem? Despite the vast literature we argue that more insight can be gained by additional modeling studies for a number of reasons: First, to build a comprehensive understanding of why resistance or tolerance evolves in a given host-parasite system, a null model is needed for comparison to illuminate mechanisms for why a given pathway was favored. \mk{Something about returning to the building blocks}. Neutral theory in ecology has proven to be useful for a similar reason... \mk{I think...}. If resistance or tolerance evolution is expected to be as context dependent as is becoming more evident, a number of comparisons will be needed to start to build a comprehensive picture for the traits that favor one pathway over the other. Second; despite fast evolution during epidemics, most existing modeling studies do not provide insight into the evolution of host and parasite during the course of an epidemic. The majority of studies employ a separation of time scales between ecological (epidemiological) and evolutionary time scales that is a departure from how evolution during an epidemic operates (Lion 2018); the majority of studies assume parasites maximize fitness by maximizing $\rzero$ (which will feed back to impact how hosts evolve), despite evidence that parasites are more likely to maximize $r$ in an epidemic (Bolker et al. 2010, Lion and Metz 2018); most studies assume infinite population size and do not consider stochasticity in the evolution of host or pathogen (but see Parsons et al. 2018), despite the large impacts that parasites can have on host population size (Frickel et al. 2016, Frickel et al. 2018).
+
+One reason for the lack of work on the evolution of finite populations on ecological time scales is a lack of mathematical theory. Lion (2018) writes: ``Analytical progress is possible only through additional methodological assumptions, generally taking the form of a separation of time scales''. However, progress can still be made with simple simulations, especially in the case of a near-neutral null model that can serve as a comparison. 
+
+Here we build a simple host parasite coevolutionary model that... (in essence strives for a neutral (at least equivalent costs/benefits etc.)... we expect (my hypothesis) is that properties will emerge giving tolerance an advantage in a stochastic evolutionary model... Important to keep these expectations in mind in comparison in finite populations... 
+
+We examine \mk{I am not so clear on this part, but I definitely think there is something here} the rate of fixation of a favorable adaptation (increase in resistance or tolerance) as a function of population size. Using an effect size that is likely to lead to fixation at \mk{some appropriate time frame}, we show how power to detect resistance is higher than for tolerance for effect sizes that have equivalent effects on host fitness. We show that range tolerance (variation within an individual over the course of infection) is especially difficult to detect and requires many observations within and among individuals (similar to Kain et al. 2015). Finally, we show that a positive correlation between resistance and tolerance will make it harder to detect differences in tolerance because of the reduced range over which parasite load is found. 
+
+Predicting whether virulence or tolerance is likely to evolve to a novel pathogen has important implications for both host health and evolutionary dynamics. For example, tolerance is expected to keep pathogen load high (Roy and Kirchner 2000) and can lead to high mortality rates in naive (unevolved) hosts (Miller et al. 2006)... More here needed
+ 
+\mk{Pile of notes from here down. Plenty more citations that didn't make it into the top part}
+
+\bb{worth thinking about building a framework where we both simulate evolution and simulate the attempt to detect/quantify resistance \& tolerance given samples from the host/path population? (Somewhat related to Daniel Park's Red Queen paper in progress \ldots)}
+
+\section*{Background}
+
+In recent years a considerable amount of interest is being given to host tolerance, which is now understood to be a viable alternative to resisting infection by pathogens. Long history in plant literature etc. etc.
+
+\emph{Natural experiments} following pathogen invasion into naive host populations provide important data on the evolution of defense... For example, the evolution of resistance of European rabbits to the myxoma virus; finch conjunctivitis; blue mussels in the north sea; and others... 
+
+Overall there are less examples of tolerance evolving in response to novel pathogen invasion. This may be because tolerance evolves less frequently than resistance; however, we have also been searching for tolerance for far less time than resisance, and it is harder to measure (Raberg et al. 2007, 2010).
+
+Substantial modeling work has been devoted to trying to understand the evolution of host resistance and tolerance, often in a coevolutionary framework (Carval and Ferriere 2010; Best et al. 2014). However, this work does little to help us predict which type of defense mechanism is likely to evolve. While a deep understanding of the genetic and physiological mechanisms of tolerance and resistance (e.g. genetic correlation and details about shared physiological pathways) would help us, the relatively nascent understanding of the mechanisms of resistance and tolerance (Soares et al. 2017), suggests that additional modeling work may help us determine when and where to look for tolerance vs resistance.
+
+Whether we can predict if resistance or tolerance is evolving and why would either evolve in the first place has considerable implications for public-health management. 
+
+Resistance is thought to lead to arms-race dynamics (a robust result in both the modeling and empirical literature), while tolerance is thought to minimally effect parasite evolution because it does not decrease parasite fitness, though it can lead to the emergence of a higher fitness peak for parasites, which will lead
+
+Whether tolerance or resistance will evolve, removed from the specific physiological mechanism, should be predictable with a few pieces of information, namely:
+-- Costs to evolving a response, which may be affected by genetic background (e.g. previous phylogenetically similar parasites may have led to the evolution of resistance or tolerance which may be coopted for the current problem)
+-- Benefits of each, which can be written as the slope of the fitness surface
+
+Interestingly, while the evolution of host resistance is likely to lead to parasite evolution, which will require further evolution of the parasite; however, because of the near-sighted nature of evolution, arms-race dynamics may be inescapable (are not \emph{detectable} to be a lower fitness option in the long term, I think?)...
+
+All things being equal, a host's fitness will be maximized if it can make it to the point where a parasite population is no longer responding to continued host evolution. 
+
+\subsection*{Resistance and tolerance evolution (eco-evo)}
+
+Robust result that virulence (and/or epidemic speed) declines with host population size (Lipsitch et al. 1995, Boots and Sasaki 1999, Griette et al. 2015, Parsons et al. 2018).
+
+Experimental evidence of de novo \emph{qualitative} resistance (receptor binding turned off) in both bacteria and algae (Bohannan and Lenski 2000, Frickel et al. 2018).
+
+Van der Linden et al. 2013: evidence for a GFG mode of tolerance in \emph{Arabidopsis} to bacterial wilt
+
+Empirical evidence for eco-evo feedbacks for resistance include: Bohannan and Lenski 2000, Brunner et al. 2016, \emph{in a sense} Coloma et al. 2018, \emph{anti-predator defenses} Hiltunen and Becks 2014. Great experimental work in Frickel et al. 2016 that shows evolution of resistance (GFG type) in algae in response to many phage strains. Evolution of the host led to a general resistant phenotype that was resistant, but had lower growth rate in the absence of parasites -- here the host ``won'' in the sense of ending population cycles and keeping phage at low density. Though it wasn't seen here, theory would say that in the longer term non-resistant host genotypes would arise, which would have higher growth, and Red Queen cycles would result. 
+
+Little theory exists for finite populations and no separation of time scales. ``Analytical progress is possible only through additional methodological assumptions, generally taking the form of a separation of time scales''
+
+Eco-evolutionary dynamics in co-evolution of host and pathogen are rare (but see Frickel et al. 2016). This model, however, only considers host resistance evolution, despite ever-increasing evidence of host tolerance (though I guess examples of host tolerance evolving in natural systems is still pretty rare). Link back to why host tolerance is rare in an epidemic eco-evo setting (can't find it or not likely to evolve)... 
+
+Raberg et al. 2007 find variation in tolerance despite theoretical predictions that it shouldn't exist (Roy and Kirchner 2000, Miller et al. 2005, Best et al. 2014); however the time scales of the theoretical and empirical likely do not align (not at equilibirum, changing environment changing patterns of selection etc. etc.)
+
+...the effects of tolerance evolution on pathogen prevalence seems like it would have a relatively large effect on eco-evo time scales) Explore tolerance and resistance in an eco-evo setting under minimal assumptions and build from there... 
+
+Theoretical ways in which ecol-evo feedback can effect antagonistic coevolution
+\begin{enumerate}
+    \item rapid changes in host pop size leads to drift. Changes in host pop size affect rate of infection, which will affect pathogen pop size and thus rate of evolution
+    \item decrease in host pop size can lead to selection for decreased virulence
+\end{enumerate}
+
+\subsubsection*{Aside 1}
+
+Maybe a bit boring? of a project, but could imagine setting up a simple model that has resistance and tolerance in equivalence in some way (effect sizes for each that lead to same fitness in hosts with that phenotype) --- shown via classic Adaptive Dynamics?; show power to detect an effect size of that size for resistance and tolerance, assuming a biologically reasonable amount of variation among individuals in both intercept (general vigor), as well as resistance and tolerance. As part of this, do we have a sense about the \emph{ecological} aspects/feedbacks at reasonable effect sizes of resistance and tolerance? (e.g degree of resistance evolution will affect the growth rate of the focal species (e.g. by decreasing density due to costs of resistance --- Frickel et al. 2016), which can alter pathways for nutrients (Brunner et al. 2016), leading to cascades.
+
+\subsubsection*{Aside 2}
+
+Really nice paper: Lion (2018) that builds to adaptive dynamics and quantitative genetic approaches from first principles. Includes discussion of Price, Fisher, etc. Good conceptual clarity --- Outlines the simplifying assumptions (and general difficulty) of analytic solutions to changes in the mean and variance of the distribution of multivariate traits --- coevoltuion from here??? (simulation ...) ``When the variance is too large for approximations (assuming small variance in fitness among phenotypes), there is no escapign the complex problem of jointly tracking the entangled dynamics of the trait distribution and environmental variables''. Importance of keeping in mind the importance of the assumptions of separation of time scales and invasion of a mutant vs fixation -- e.g. transient mutant (Bolker et al. 2010). Also brings up an important point about multiple demographic attractors and certain mutants pushing evoltuion on one trajectory; a higher fitness (in absolute sense) mutant may not be able to invade because of the environment created in the given attractor (sort of what I was thinking about... in a sense)
+
+\subsubsection*{Asside 3: Revisiting Carval and Ferriere 2010, Miller et al, 2006, and Best et al. 2014}
+
+Despite Roy and Kirchner (2000) and others' findings that there is a positive feedback on tolerance, they missed the additional positive feedback of not having their adaptations reset (though Frickel et al. 2016 don't find parasite adaptation in a GFG model --- in a resistance range QG model this wouldn't be expected). 
+
+Carval and Ferriere (2010) find that traits of the pathogen will favor either resistance or tolerance: fast transmission will favor tolerance because costs of resistance become too high for hosts to make much progress with resistance (they simply get bombarded too frequently to escape infection).
+
+In a three way evolutionary model Carval and Ferriere (2010) find that pure strategies are favored over a large parameter space.
+
+Increases in parasite transmission rate favor increased tolerance... In a ``nearly neutral'' model that favors continued evolution of transmission rate, tolerance will be favored even if resistance is favored transitionally
+
+
+
+
+\subsection*{Finite populations, theory, simulation}
+
+Most work approaches the evolution of virulence and coevolution of host resistance or tolerance using \emph{Adaptive Dynamics}. However, rapid pathogen diversification prior to epidemic equilibirum is common (MYXV; WNV; \emph{P. ramosa}): Duffy et al. 2009, Auld et al. 2013; \emph{M. gallisepticum}: Hawley et al. 2015; need to explore evolutionary and epidemiological processes on the same time scale (Kuhnert et al. 2011). Even Parsons et al. 2018, which uses \emph{Stochastic Adaptive Dynamics} is only moderately connected to the process that occurs in a newly emergent disease. Lion and Metz 2018: ``Almost all realistic ecological ingredients of natural host–pathogen interactions flout the R0 maximisation paradigm.'' Maybe too much of a stretch (e.g. pandering if this finds its way to the intro??? -- unrealistic assumptions etc... argues for a simulation even if it is less elegant???). Even quantitative genetic approaches assume weak selection... MYXV, WNV displacement... In a newly emerging pathogen selection will often be on \emph{little r -- the exponential rate of growth}, resulting in an increase in virulence in the epidemic phase of infection (Bolker et al. 2010, Hawley et al. 2013).
+
+\begin{enumerate}
+    \item Teller et al. 2014: Models of coevolution with infinite population sizes do not predict reliably the observed genomic signatures.
+    \item Gokhale et al. 2013: Red queen dynamics are likely to fall apart in finite populations with drift because of the fixation of alleles -- in support of selective sweeps in general
+\end{enumerate}
+
+Does pressure on hosts to evolve tolerance / resistance change as a function of the epidemic phase of infection? Despite nascent understanding about the mechanisms of resistance and tolerance, starting from neutral assumptions and building may give us broad insight (e.g. into a number of different requirements for one or the other that may correspond to differnet classes of parasite...)
+
+\begin{enumerate}
+    \item Evolutionary process on genetic diversity:
+    \subitem Expands due to mutation and small pop size (diffusion)
+    \subitem Moves to areas of higher fitness due to selection (advection) 
+    \item Resistance 
+    \subitem In the extreme case of fast parasite evolution and slow host evolution and Gandon 1999 version of quantiative resistance, advection won't actually move the host anywhere
+    \item Tolerance:
+    \subitem Alternatively, tolerance will still result in an advection term and lead to longer term fitness gains for the host
+    \item Keys to resistance vs tolerance:
+    \subitem \emph{de novo} host mutation is rare at the time scales we are talking about, which means standing genetic variation is the material for selection: differences in variation for resistance and tolerance?
+    \subitem Slope of the fitness landscape
+    \subitem Prerequisites to tolerance in the form of resistance (Soares et al. 2017)
+    \subitem Parasite is far from its optimum and thus responds to both resistance and tolerance evolution
+\end{enumerate}
+
+Use a close-to-neutral simulation model to examine evolution of resistance and tolerance with as few assumptions as possible. This model will help to illuminate which is likely to evolve, all things being equal, which can be used to understand what are the minimal additional assumptions (and of what magnitude) are required to push evolution to resistance. Basically in this model tolerance should evolve without bound; given classic definitions of resistance and tolerance, strains that initially evolve resistance should give way to tolerance. This will happen faster at smaller (larger?) population sizes?
+
+This raises the question of what are the minimal requirements to push that evolution towards resistance:
+\begin{enumerate}
+    \item smaller (larger?) population sizes
+    \item steeper fitness gradient for resistance (larger benefit to cost ratio)
+    \item greater \# of targets for mutation (e.g. more pathways leading to resistance than for tolerance)
+\end{enumerate}
+
+\textbf{\emph{I think}} that none of this should matter if the pathogen already invades at its optimum given by the stable equilibrium in a simulation without host evolution, because tolerance will only ever evolve here (with small departures into resistance because of domesticity)
+
+\subsection*{Hypotheses (old) extended and some methods}
+
+My hypothesis is that there is a local maxima of fitness for resistance that is easier to reach, but is actually lower than the global fitness maxima of tolerance that isn't reached. Interestingly, this means that all things being equal, tolerance is basically better for a host, even if the initial fitness gradient for resistance is steeper. This is where finite population size comes in. It should be relatively simple to show that with demographic stochasticity and a majority deleterious mutations arising in finite population, the more often a host population has to evolve to remain on top of its fitness peak, the more likely it is to fall of that peak. 
+
+To be fair, I am not entirely sure how this would work given the fact that deleterious mutations will still be arising in the tolerance case as well. Something to do with only a single genotype in that scenario and a rare invader --- something about competition (hard for a very rare mutation relative to the case where all other individuals are at the fitness peak???)
+
+There is a much higher probability that this stochastic slide happens to resistance than tolerance. 
+
+In sum, finite populations are likely to evolve more tolerance than resistance, given that they can get over the initial evolutionary barrier of making it to the point where the parasite population is not evolving in response. 
+
+Something about how common small host populations are (e.g. on the invading wave)
+
+\end{document}

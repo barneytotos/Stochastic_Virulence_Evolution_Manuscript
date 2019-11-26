@@ -1,0 +1,72 @@
+\documentclass{article}
+%\usepackage[sort, comma]{natbib}
+\usepackage[comma]{natbib}
+\bibliographystyle{chicago2}
+\usepackage[utf8]{inputenc}
+\RequirePackage[left=1in, right=1in, top=1in, bottom=1in, headheight=12pt, letterpaper]{geometry}
+\usepackage[utf8]{inputenc}
+\usepackage[hyphens]{url}
+\usepackage{xspace}
+\usepackage{eucal}
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{float}
+\usepackage{verbatim}
+\usepackage{fancyvrb}
+\usepackage{longtable}
+\usepackage{tabularx}
+\usepackage{colortbl}
+\usepackage{booktabs}
+\usepackage{arydshln}
+\usepackage{pdflscape}
+\usepackage{afterpage}
+\usepackage[colorlinks=true, citecolor = blue, linkcolor = black]{hyperref}
+\usepackage{environ}
+\usepackage{marginnote}
+\usepackage{lineno}
+\usepackage{setspace}
+\usepackage{arydshln}
+\usepackage{lscape}
+\usepackage{palatino}
+\usepackage{subfiles}
+\usepackage{lscape} 
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{multirow}
+\usepackage[english]{babel} 
+\usepackage{xcolor}
+\definecolor{vlg}{rgb}{0.88, 0.88, 0.88}
+\newcolumntype{R}[1]{>{\raggedright\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+\newcommand{\alphastar}{\ensuremath{\alpha^{*}}}
+\newcommand{\betaf}{\ensuremath{\beta_{f}}}
+\newcommand{\betar}{\ensuremath{\beta_{r}}}
+\newcommand{\mk}[1]{{\bf \color{red} MK: #1}}
+\newcommand{\bb}[1]{{\bf \color{blue} BMB: #1}}
+\newcommand{\jw}[1]{{\bf \color{green} JW: #1}}
+\newcommand{\rzero}{{\cal R}_0\xspace}
+\newcommand{\Reff}{{\cal R}_E\xspace}
+\newcommand{\figref}[1]{Figure~\ref{fig:#1}}
+\pagenumbering{gobble}
+
+\title{Stochastic Parasite Virulence Evolution}
+\author{Morgan P Kain\textsuperscript{1}* and Benjamin M Bolker\textsuperscript{2,3}}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\noindent *Corresponding author: morganpkain@gmail.com \\
+\textsuperscript{1}Department of Biology, Stanford University, 371 Jane Stanford Way
+Stanford, CA, USA, 94305 \\
+\textsuperscript{2}Department of Mathematics and Statistics, McMaster University, 1280 Main Street West, L8S 4K1 Hamilton, ON, Canada \\
+\textsuperscript{3}Department of Biology, McMaster University, 1280 Main Street West, L8S 4K1 Hamilton, ON, Canada \\
+
+% \input{doc.tex}
+\input{outline.tex}
+\clearpage
+
+\bibliography{par_vir}
+
+\end{document}
