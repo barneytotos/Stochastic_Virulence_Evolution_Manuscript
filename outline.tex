@@ -1,15 +1,30 @@
-Outline
-
 \section*{Introduction}
 
 \begin{itemize}
     \item Parasite evolution: what do we really know?
     \item tradeoff theory popular, but many complexities (multilevel selection, short-sighted evolution, etc.)
     \item heritable traits affecting fitness - so must evolve!
-    \item start from scratch (more or less)
     \item e.g. find ESS, adaptive dynamics, "Price equation"
     \item (ref Abrams paper?)
     \item parallel with/inspiration from nearly neutral theory
+\end{itemize}
+
+\subsection*{Premise}
+
+\begin{itemize}
+    \item We ask how mutation, selection, and drift interact to control the outcome of pathogen evolution
+    \item We first examine how pathogens evolve in the absence of within and between-host tradeoffs (i.e. transmission and infection termination) and slowly add complexity in two stages to examine the evolution of pathogens constrained by tradeoffs between recovery and transmission
+    \item Specifically, we examine (as a function of N, mutation rate and spectrum, qualitative and quantitative form of tradeoffs):
+        \subitem 1) Equilibrium pathogen exploitation strategy
+            \subsubitem Once at equilibrium we are also interested in average standing genetic diversity (e.g. what is the distribution of host infection type), distance of the average (and max?) departure from equilibrium
+        \subitem 2) Transient pathogen behavior 
+            \subsubitem including time to equilibrium (in generations? \mk{measured in some way against assumed host generation time maybe?}), size of the transient departure from... (...steepest gradient descent (eco-evo feedback), max or min recovery rate reached depending on whether starts above or below, changes in the width/shape of the genetic diversity (more eco-evo feedback stuff) \mk{not quite sure about this, but what we currently track can capture all of these things})
+        \subitem 3) Conditions leading to pathogen extinction
+    \item \mk{Missing anything?}
+    \item \mk{The sim tracks all of the following which should be able to capture the above: number of I strains, shannon diversity, sd in recovery rate among circulating strains, total number of mutation events}
+    \item \mk{Adjusted the code as you suggested to a while loop that adds more parameter values if needed given mutational bias driven extinction. Set to run whenever}
+    
+        
 \end{itemize}
 
 \section*{Methods}
