@@ -40,24 +40,38 @@
 \section*{Part 2: tradeoffs}
 
 \subsection*{A: tradeoff model (1-dimension)}
-    - 
+
+\begin{itemize}
+\item instantaneous tracking of tradeoff curve (defined by recovery rate)
+\end{itemize}
+
 \subsection*{B: efficiency (2-dimensions, alpha + beta) [stabilizing + directional]}
-    - 
-\subsection*{C: tuning model (2-dimensions, alpha + phi) [stabilizing + stabilizing]}         - multiple controls on exploitation rate?
+\begin{itemize}
+  \item evolve in $\gamma$ (recovery rate) and proportion of $\beta(\gamma)$
+  \item can allow correlated evolution (decide on second pass)
+\end{itemize}
+
+\subsection*{C: tuning model (2-dimensions, alpha + phi) [stabilizing + stabilizing]}
+\begin{itemize}
+  \item for now, this is on hold (possibly discuss/refer back to the thesis results)
+  \item multiple controls on exploitation rate?
+\end{itemize}
 
 \section*{Discussion}
 
-Caveats/simplifications:
+\subsection*{Caveats/simplifications:}
 
 \begin{itemize}
     \item fixed host population size
     \item no resistance/tolerance
-        -- Exists in the model but didn't explore it
+      \begin{itemize}
+      \item Exists in the model but didn't explore it
+      \end{itemize}
     \item independent mutation (diagonal G matrix)
     \item SIS model
 \end{itemize}
 
-Dynamics
+\subsection*{Dynamics}
 
 \begin{itemize}
     \item eco-evo
@@ -65,7 +79,7 @@ Dynamics
     \item finite-population size
 \end{itemize}
 
-### biology
+\subsection*{Biology}
 
 \begin{itemize}
     \item mutation, selection, drift
